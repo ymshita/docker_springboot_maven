@@ -30,11 +30,15 @@ services:
       # DB_URL: ${DB_URL}
       # DB_USERNAME: ${DB_USERNAME}
       # DB_PASSWORD: ${DB_PASSWORD}
+      # spring.datasource.driver-class-name: com.mysql.cj.jdbc.Driver
       spring.datasource.driverClassName: ${DB_DRIVER_CLASS_NAME}
-      spring.datasource.url: ${DB_URL}
+      spring.datasource.url: "jdbc:${DB_CONNECTION}://db/${APP}"
       spring.datasource.username: ${DB_USERNAME}
       spring.datasource.password: ${DB_PASSWORD}
       spring.redis.host: "redis"
+      spring.jpa.hibernate.ddl-auto: update
+      spring.jpa.show-sql: true
+      spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQLDialect
     depends_on:
       - db
       - redis
